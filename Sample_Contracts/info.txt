@@ -1,0 +1,1 @@
+This directory contains sample contracts that we used in the testing of this project. 
