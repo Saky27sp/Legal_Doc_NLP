@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <title>Analysis Results</title>
+</head>
+<body>
+    <h2>📝 Contract Summary</h2>
+    <p>{{ summary }}</p>
+
+    <h2>⚠️ Risky Clauses</h2>
+    {% if risky_clauses %}
+        <ol>
+{% for clause in risky_clauses %}
+    <li style="margin-bottom: 10px;">{{ clause }}</li>
+{% endfor %}
+</ol>
+
+    {% else %}
+        <p>No risky clauses found.</p>
+    {% endif %}
+
+    <h2>👥 Parties Involved</h2>
+    <ul>
+    {% for party in parties %}
+        <li>{{ party }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>📄 Obligations</h2>
+    <p>{{ obligations }}</p>
+
+    <h2>🔍 Keyword Contexts</h2>
+    {% for item in keyword_contexts %}
+        <h3>Keyword: {{ item.keyword }}</h3>
+        <ul>
+        {% for occ in item.occurrences %}
+            <li><strong>Page {{ occ.page }}:</strong> {{ occ.context }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
